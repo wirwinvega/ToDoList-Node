@@ -18,7 +18,8 @@ switch (comando) {
         break;
     case 'listar':
         console.log('Listar tareas');
-        let toDoList = getToDoList();
+        let filter = (argv.completeFilter) ? argv.completeFilter : null;
+        let toDoList = getToDoList(filter);
         for (let task of toDoList) {
             console.log("===========Por Hacer=============".green);
             console.log(task.description);

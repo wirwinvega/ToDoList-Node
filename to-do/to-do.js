@@ -1,4 +1,5 @@
 const fs = require('fs');
+const colors = require('colors');
 
 let toDoList = [];
 
@@ -26,9 +27,11 @@ const loadDB = () => {
     }
 }
 
-const getToDoList = () => {
+const getToDoList = (completeFilter) => {    
     loadDB();
-    return toDoList;
+    //Transform string value of completeFilter to boolean value in filter variable.
+    let filter = (completeFilter == 'true');
+    return (completeFilter) ? toDoList.filter(task => task.complete === filter) : toDoList;
 }
 
 const create = (description) => {
